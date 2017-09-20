@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js  tutorial</title>
+        <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+        <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    </head>
+    <body>
+        <div id="app">
+            {{ message }}
+        </div>
+        <div id="app-2">
+            <span v-bind:title="title_message">
+                this is a v-bind:title test
+            </span>
+        </div>
+        <div id="app-3">
+            <p v-if="seen">Now you see me.</p>
+        </div>
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                    el: "#app",
+                    data: {
+                        message: 'Hello vue js!!'
+                    }
+                });
+            var app2 = new Vue({
+                    el: "#app-2",
+                    data: {
+                        title_message: 'You loaded this page on ' + new Date().toLocaleString()
+                    }
+                });
+
+            var app3 = new Vue({
+                    el: "#app-3",
+                    data: {
+                        seen: true
+                    }
+                });
+        </script>
+    </body>
+</html>
