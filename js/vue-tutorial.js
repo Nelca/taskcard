@@ -13,7 +13,13 @@ var app2 = new Vue({
 var app3 = new Vue({
         el: "#app-3",
         data: {
-            seen: true
+            seen: true,
+            change_seen: 0
+        },
+        watch: {
+            change_seen: function (newVal, oldVal) {
+                console.log("data is changed from ", oldVal, " to ", newVal)
+            }
         }
     });
 var app4 = new Vue({
@@ -58,9 +64,19 @@ var app7 = new Vue({
     }
 });
 
+
+// tutorial of ...
 var data = { a:1 };
 var vm = new Vue({
     el: '#example',
-    data: data
+    data: data,
+    created: function () {
+        console.log("vm is created!")
+    },
+    watch: {
+        a: function (newVal, oldVal) {
+            console.log("data is changed from ", oldVal, " to ", newVal)
+        }
+    }
 });
 
