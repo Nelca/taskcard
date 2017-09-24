@@ -18,7 +18,8 @@ var app3 = new Vue({
         },
         watch: {
             change_seen: function (newVal, oldVal) {
-                console.log("data is changed from ", oldVal, " to ", newVal)
+                console.log("change cs ", oldVal, " to ", newVal)
+                this.seen = true
             }
         }
     });
