@@ -18,8 +18,8 @@ var app3 = new Vue({
         },
         watch: {
             change_seen: function (newVal, oldVal) {
+                this.seen = newVal==="1"
                 console.log("change cs ", oldVal, " to ", newVal)
-                this.seen = true
             }
         }
     });
@@ -67,7 +67,7 @@ var app7 = new Vue({
 
 
 // tutorial of ...
-var data = { a:1 };
+var data = { chkVal: "str" };
 var vm = new Vue({
     el: '#example',
     data: data,
@@ -77,6 +77,19 @@ var vm = new Vue({
     watch: {
         a: function (newVal, oldVal) {
             console.log("data is changed from ", oldVal, " to ", newVal)
+        }
+    },
+    computed: {
+        typeOfChkVal: {
+            get: function () {
+                return typeof(this.chkVal)
+            },
+            set: function (newValue) {
+                console.log("set new val of typeOfCheckVal")
+                if (newValue == "number") {
+                    this.chkVal = parseInt(this.chkVal)
+                }
+            }
         }
     }
 });

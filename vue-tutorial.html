@@ -15,9 +15,9 @@
         </div>
         <div id="app-3">
             <p v-if="seen">Now you see me.</p>
-            <input type="radio" name="cs" value="0" v-model="change_seen" id="cs_1"/>
+            <input type="radio" name="cs" value="1" v-model="change_seen" id="cs_1"/>
             <label for="cs_1">seen</label>
-            <input type="radio" name="cs" value="1" v-model="change_seen" id="cs_2"/>
+            <input type="radio" name="cs" value="0" v-model="change_seen" id="cs_2"/>
             <label for="cs_2">hide</label>
         </div>
         <div id="app-4">
@@ -41,9 +41,10 @@
             </ol>
         </div>
         <div id="example">
-            {{ a }}
+            <p>Check val is {{ chkVal }}</p>
+            <p>Check val's type is {{ typeOfChkVal }}</p>
         </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.06"></script>
+        <script src="js/vue-tutorial.js?v=0.13"></script>
     </body>
 </html>
