@@ -44,7 +44,11 @@
             <p>Check val is {{ chkVal }}</p>
             <p>Check val's type is {{ typeOfChkVal }}</p>
         </div>
+        <div id="example-2">
+            <div class="inline-class" v-bind:class="classObject">bind class test.</div>
+            <my-component class="baz boo"></my-component>
+        </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.13"></script>
+        <script src="js/vue-tutorial.js?v=0.21"></script>
     </body>
 </html>

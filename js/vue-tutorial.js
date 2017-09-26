@@ -14,7 +14,7 @@ var app3 = new Vue({
         el: "#app-3",
         data: {
             seen: true,
-            change_seen: 0
+            change_seen: 1
         },
         watch: {
             change_seen: function (newVal, oldVal) {
@@ -68,7 +68,7 @@ var app7 = new Vue({
 
 // tutorial of ...
 var data = { chkVal: "str" };
-var vm = new Vue({
+var vmExample1 = new Vue({
     el: '#example',
     data: data,
     created: function () {
@@ -85,10 +85,30 @@ var vm = new Vue({
                 return typeof(this.chkVal)
             },
             set: function (newValue) {
-                console.log("set new val of typeOfCheckVal")
+                console.log("set new val at typeOfCheckVal")
                 if (newValue == "number") {
                     this.chkVal = parseInt(this.chkVal)
                 }
+            }
+        }
+    }
+});
+
+Vue.component('my-component', {
+    template: '<div class="foo bar">component-test div</div>'
+});
+
+var vmExample2 = new Vue({
+    el: '#example-2',
+    data: {
+        isActive: true,
+        isError: false
+    },
+    computed: {
+        classObject: function () {
+            return {
+                active: this.isActive,
+                'error-has-occured': this.isError
             }
         }
     }
