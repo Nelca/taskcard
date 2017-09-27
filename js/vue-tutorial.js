@@ -102,7 +102,14 @@ var vmExample2 = new Vue({
     el: '#example-2',
     data: {
         isActive: true,
-        isError: false
+        isError: false,
+        checkError: false
+    },
+    watch: {
+        checkError: function (newVal, oldVal) {
+            console.log("checkError ", oldVal, " to ", newVal)
+            this.isError = newVal
+        }
     },
     computed: {
         classObject: function () {

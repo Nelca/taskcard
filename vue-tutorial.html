@@ -3,6 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Vue.js  tutorial</title>
+        <style >
+            .active {
+                background: #e1fffe;
+            }
+            .error-has-occured {
+                color: #f00;
+            }
+        </style>
     </head>
     <body>
         <div id="app">
@@ -46,9 +54,10 @@
         </div>
         <div id="example-2">
             <div class="inline-class" v-bind:class="classObject">bind class test.</div>
+            <input type="checkbox" v-model="checkError" id="check_error"/><label for="check_error">check error</label>
             <my-component class="baz boo"></my-component>
         </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.21"></script>
+        <script src="js/vue-tutorial.js?v=0.25"></script>
     </body>
 </html>
