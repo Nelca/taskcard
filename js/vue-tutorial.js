@@ -120,4 +120,24 @@ var vmExample2 = new Vue({
         }
     }
 });
+var vmExample3 = new Vue ({
+    el: '#example-3',
+    data: {
+        styleObject: {
+            color: 'red',
+            fontSize: '20px'
+        },
+        chk: 'A'
+    }
+});
 
+var vmForObj = new Vue ({
+    el: '#v-for-object',
+    data: {
+        object: {
+            firstName: 'Minato',
+            lastName: 'Nakamura',
+            age: 28
+        }
+    }
+});

@@ -57,7 +57,24 @@
             <input type="checkbox" v-model="checkError" id="check_error"/><label for="check_error">check error</label>
             <my-component class="baz boo"></my-component>
         </div>
+        <div id="example-3">
+            <div v-bind:style="styleObject">Style bind test</div>
+            <template v-if="chk === 'A'">
+                <p>A:use template tag and v-if</p>
+            </template>
+            <template v-else-if="chk === 'B'">
+            <p>{{ chk }}:use template tag and v-if</p>
+            </template>
+            <template v-else>
+                <p>Other:use template tag and v-if</p>
+            </template>
+        </div>
+        <ol id="v-for-object">
+            <li v-for="(value, key, index) in object" :id="'v-for-' + index" :key="'v-for-' + index">
+                {{ index }} : {{ key }} : {{ value }}
+            </li>
+        </ol>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.25"></script>
+        <script src="js/vue-tutorial.js?v=0.29"></script>
     </body>
 </html>
