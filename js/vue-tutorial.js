@@ -141,3 +141,24 @@ var vmForObj = new Vue ({
         }
     }
 });
+
+var vmListObj = new Vue ({
+    el: '#listObject',
+    data: {
+        items: [
+            { message: 'hoge'},
+            { message: 'fuga'},
+            { message: 'piyo'}
+        ],
+        numbers: [
+            1,2,3,4,5
+        ]
+    },
+    conmputed: {
+        evenNumbers: function () {
+            return this.numbers.filter(function (num) {
+                return num %2 === 0
+            })
+        }
+    }
+});
