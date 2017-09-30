@@ -154,10 +154,10 @@ var vmListObj = new Vue ({
             1,2,3,4,5
         ]
     },
-    conmputed: {
+    computed: {
         evenNumbers: function () {
             return this.numbers.filter(function (num) {
-                return num %2 === 0
+                return num % 2 === 0
             })
         }
     }
