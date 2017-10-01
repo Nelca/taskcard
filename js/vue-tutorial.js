@@ -162,3 +162,44 @@ var vmListObj = new Vue ({
         }
     }
 });
+
+Vue.component('todo-item', {
+    template: '\
+    <li>\
+        {{ title }}\
+        <button v-on:click="$emit(\'remove\')">X</button>\
+    </li>\
+    ',
+    props: ['title']
+});
+var todos = [
+    {
+        id: 1,
+        title: 'todo-1'
+    },
+    {
+        id: 2,
+        title: 'todo-2'
+    },
+    {
+        id: 3,
+        title: 'todo-3'
+    }
+];
+var vmTodo = new Vue({
+    el: '#v-for-test',
+    data: {
+        newTodoText: '',
+        todos: todos,
+        nextTodoId: 4
+    },
+    methods: {
+        addNewTodo: function () {
+            this.todos.push({
+                id: this.nextTodoId++,
+                title: this.newTodoText
+            })
+            this.newTodoText = ''
+        }
+    }
+});
