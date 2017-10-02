@@ -203,3 +203,44 @@ var vmTodo = new Vue({
         }
     }
 });
+
+var vmModelTest = new Vue({
+    el: '#v-model-test',
+    data: {
+        msg: '',
+        lazyMsg: ''
+    }
+});
+var propList = {
+    numProp: Number,
+    strNumProp: [String, Number],
+    reqStrProp: {
+        type: String,
+        requierd: true
+    },
+    defaultSetedProp: {
+        type: Number,
+        default: 100
+    },
+    objProp: {
+        type: Object,
+        default: function () {
+            return { meaage: 'default hello :)'}
+        }
+    },
+    customValidProp: {
+        validator: function (value) {
+            return value > 10
+        }
+    }
+}
+Vue.component('prop-example', {
+    template: '<p>{{ numProp }}</p>'
+    poprs: propList
+});
+var vmCheckProp new Vue({
+    el: '',
+    data: {
+        propList: propList
+    }
+});

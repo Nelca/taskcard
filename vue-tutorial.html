@@ -88,7 +88,16 @@
                 <li is="todo-item" v-for="(todo, index) in todos" :key="todo.id" :title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
             </ul>
         </div>
+        <div id="v-model-test">
+            <input v-model="msg">
+            <p>Message is : {{ msg }}</p>
+            <input v-model.lazy="lazyMsg">
+            <p>Lazy message is : {{ lazyMsg }}</p>
+        </div>
+        <div id="check-property-test">
+            <prop-example v-bind="propList"></prop-example>
+        </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.38"></script>
+        <script src="js/vue-tutorial.js?v=0.39"></script>
     </body>
 </html>
