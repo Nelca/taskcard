@@ -212,11 +212,9 @@ var vmModelTest = new Vue({
     }
 });
 var propList = {
-    numProp: Number,
-    strNumProp: [String, Number],
     reqStrProp: {
         type: String,
-        requierd: true
+        requierd: true,
     },
     defaultSetedProp: {
         type: Number,
@@ -225,7 +223,7 @@ var propList = {
     objProp: {
         type: Object,
         default: function () {
-            return { meaage: 'default hello :)'}
+            return { meaage: 'default hello !!'}
         }
     },
     customValidProp: {
@@ -234,13 +232,55 @@ var propList = {
         }
     }
 }
+var propValList = {
+    reqStrProp: '',
+    defaultSetedProp: 0,
+    objProp: new Object(),
+    customValidProp: 20
+}
 Vue.component('prop-example', {
-    template: '<p>{{ numProp }}</p>'
-    poprs: propList
+    template: '<p>{{ defaultSetedProp }}</p>',
+    props: propList
 });
-var vmCheckProp new Vue({
-    el: '',
+var vmCheckProp = new Vue({
+    el: '#check-property-test',
     data: {
-        propList: propList
+        propList: propValList
+    }
+});
+
+Vue.component('button-counter', {
+    template: '<button v-on:click="incrementCounter">{{ counter}}</button>',
+    data: function () {
+        return { counter: 0 }
+    },
+    methods: {
+        incrementCounter: function () {
+            this.counter += 1;
+            this.$emit('increment')
+        }
+    }
+});
+
+new Vue({
+    el: '#counter-event-example',
+    data:  {
+        total: 0
+    },
+    methods: {
+        incrementTotal: function () {
+            this.total += 1
+        }
+    }
+});
+new Vue({
+    el: '#todo-example',
+    data:  {
+        total: 0
+    },
+    methods: {
+        incrementTotal: function () {
+            this.total += 1
+        }
     }
 });
