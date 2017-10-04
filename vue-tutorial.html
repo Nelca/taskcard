@@ -102,10 +102,10 @@
             <button-counter v-on:increment="incrementTotal"></button-counter>
             <button-counter v-on:increment="incrementTotal"></button-counter>
         </div>
-        <div id="todo-example">
-            <ul>
-                <todo-template>{{ total }}</todo-template>
-            </ul>
+        <div id="calc-total">
+            <currency-input label="price" v-model="price"></currency-input>
+            <currency-input label="price" v-model="price"></currency-input>
+            <p>Total : {{ total }}</p>
         </div>
         <script src="node_modules/vue/dist/vue.js"></script>
         <script src="js/vue-tutorial.js?v=0.40"></script>

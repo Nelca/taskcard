@@ -273,14 +273,36 @@ new Vue({
         }
     }
 });
-new Vue({
-    el: '#todo-example',
-    data:  {
-        total: 0
+Vue.component('currency-input', {
+    template: '<div>\
+        <label v-if="label">{{ label }}</label>\
+        <input ref="input"  :value="value" @:input="updateValues($event.target.value)" @:focus="selectAll" @:="formatedValue">
+    </div>\
+    ',
+    props: {
+        value: {
+            type: Number,
+            default: 0
+        },
+        label: {
+            type: String,
+            default: ''
+        }
+    },
+    mounted: function () {
+        this.formatValue()
     },
     methods: {
-        incrementTotal: function () {
-            this.total += 1
+        updateValue: function (value) {
+            this.$emit('input', result.value)
+        },
+        formatValue : function (){
+            this.$refs.input.value = currencyValidator.format(this.value)
+        },
+        selectAll: function () {
         }
     }
+
 });
+
+
