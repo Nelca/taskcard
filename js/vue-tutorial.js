@@ -274,9 +274,10 @@ new Vue({
     }
 });
 Vue.component('currency-input', {
-    template: '<div>\
+    template: '\
+    <div>\
         <label v-if="label">{{ label }}</label>\
-        <input ref="input"  :value="value" @:input="updateValues($event.target.value)" @:focus="selectAll" @:="formatedValue">
+        <input ref="input"  :value="value" @:input="updateValues($event.target.value)" @:focus="selectAll" @:blur="formatValue">\
     </div>\
     ',
     props: {
@@ -297,7 +298,8 @@ Vue.component('currency-input', {
             this.$emit('input', result.value)
         },
         formatValue : function (){
-            this.$refs.input.value = currencyValidator.format(this.value)
+            //this.$refs.input.value = currencyValidator.format(this.value)
+            this.$refs.input.value = this.value
         },
         selectAll: function () {
         }
@@ -305,4 +307,15 @@ Vue.component('currency-input', {
 
 });
 
-
+new Vue({
+    el: '#calc-total',
+    data: {
+        price: 0,
+        shipping: 0
+    },
+    computed: {
+        total: function () {
+            return ((this.price * 100 + this.shipping) / 100 ).toFixed(2)
+        }
+    }
+});

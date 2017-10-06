@@ -45,7 +45,7 @@
         </div>
         <div id="app-7">
             <ol>
-                <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+                <li is="todo-item" v-for="item in groceryList" v-bind:todo="item"></todo-item>
             </ol>
         </div>
         <div id="example">
@@ -108,6 +108,6 @@
             <p>Total : {{ total }}</p>
         </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.40"></script>
+        <script src="js/vue-tutorial.js?v=0.41"></script>
     </body>
 </html>
