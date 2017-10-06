@@ -277,7 +277,7 @@ Vue.component('currency-input', {
     template: '\
     <div>\
         <label v-if="label">{{ label }}</label>\
-        <input ref="input"  :value="value" @:input="updateValues($event.target.value)" @:focus="selectAll" @:blur="formatValue">\
+        <input ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)" v-on:blur="formatValue">\
     </div>\
     ',
     props: {
@@ -295,16 +295,12 @@ Vue.component('currency-input', {
     },
     methods: {
         updateValue: function (value) {
-            this.$emit('input', result.value)
+            this.$emit('input', Number(value))
         },
         formatValue : function (){
-            //this.$refs.input.value = currencyValidator.format(this.value)
             this.$refs.input.value = this.value
         },
-        selectAll: function () {
-        }
     }
-
 });
 
 new Vue({
@@ -315,7 +311,7 @@ new Vue({
     },
     computed: {
         total: function () {
-            return ((this.price * 100 + this.shipping) / 100 ).toFixed(2)
+            return this.price + this.shipping
         }
     }
 });
