@@ -107,7 +107,21 @@
             <currency-input label="shipping" v-model="shipping"></currency-input>
             <p>Total : {{ total }}</p>
         </div>
+        <style type="text/css">
+            .fade-enter-active, .fade-leave-active {
+                transition: opacity .5s;
+            }
+            .fade-enter, .fade-leave-to {
+                opacity: 0;
+            }
+        </style>
+        <div id="transition-demo">
+            <button @click="show = !show">Toggle</button>
+            <transition name="fade">
+                <p v-if="show">Hey!!</p>
+            </transition>
+        <div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.44"></script>
+        <script src="js/vue-tutorial.js?v=0.45"></script>
     </body>
 </html>

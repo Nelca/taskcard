@@ -315,3 +315,10 @@ new Vue({
         }
     }
 });
+
+new Vue({
+    el: '#transition-demo',
+    data: {
+        show: true
+    }
+})
