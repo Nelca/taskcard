@@ -11,6 +11,7 @@
                 color: #f00;
             }
         </style>
+        <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="app">
@@ -108,10 +109,14 @@
             <p>Total : {{ total }}</p>
         </div>
         <style type="text/css">
-            .fade-enter-active, .fade-leave-active {
-                transition: opacity .5s;
+            .fade-enter-active {
+                transition: all .3s ease;
+            }
+            .fade-leave-active {
+                transition: all .8s ease;
             }
             .fade-enter, .fade-leave-to {
+                transform : transelateX(10px);
                 opacity: 0;
             }
         </style>
@@ -120,8 +125,17 @@
             <transition name="fade">
                 <p v-if="show">Hey!!</p>
             </transition>
-        <div>
+        </div>
+        <div id="animate-css-demo">
+            <button @click="show = !show">Toggle</button>
+            <transition 
+                name="custom-classes-transition"
+                enter-active-class="animated tada"
+                leave-active-class="animated bounceOutRight">
+                <p v-if="show">Hey, it's animate css demo!</p>
+            </transition>
+        </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.45"></script>
+        <script src="js/vue-tutorial.js?v=0.47"></script>
     </body>
 </html>

@@ -322,3 +322,11 @@ new Vue({
         show: true
     }
 })
+
+new Vue({
+    el: '#animate-css-demo',
+    data: {
+        show: true
+    }
+})
+
