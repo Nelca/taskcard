@@ -1,9 +1,6 @@
 /*global Vue, todoStorage */
-
 (function (exports) {
-
     'use strict';
-
     var filters = {
         all: function (todos) {
             return todos;
@@ -21,7 +18,6 @@
     };
 
     exports.app = new Vue({
-
         // the root element that will be compiled
         el: '.todoapp',
 

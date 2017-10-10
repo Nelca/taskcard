@@ -135,7 +135,35 @@
                 <p v-if="show">Hey, it's animate css demo!</p>
             </transition>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+        <style type="text/css">
+            .list-complete-item {
+                transition: all 1s;
+                display: inline-block;
+                margin-right: 10px;
+            }
+            .list-complete-enter, .list-complete-leave-to {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            .list-complete-leave-active {
+                position: absolute;
+            }
+        </style>
+        <div id="animate-list-demo">
+            <button @click="shuffle">Shuffle</button>
+            <button @click="add">Add</button>
+            <button @click="remove">Remove</button>
+            <transition-group name="list-complete" tag="p">
+                <span
+                    v-for="item in items"
+                    v-bind:key="item"
+                    class="list-complete-item">
+                    {{ item }}
+                </span>
+            </transition-group>
+        </div>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/vue-tutorial.js?v=0.47"></script>
+        <script src="js/vue-tutorial.js?v=0.49"></script>
     </body>
 </html>
