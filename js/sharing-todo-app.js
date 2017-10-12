@@ -22,6 +22,7 @@
         data: {
             todos: todoStorage.fetch(),
             newTodo: '',
+            newTodoType: '',
             editedTodo: null,
             visibility: 'all'
         },
@@ -56,11 +57,13 @@
             },
             addTodo: function () {
                 var value = this.newTodo && this.newTodo.trim();
+                var typeValue = this.newTodoType && this.newTodoType.trim();
                 if (!value) {
                     return;
                 }
-                this.todos.push({ title: value, completed: false });
+                this.todos.push({ title: value, completed: false, type:typeValue });
                 this.newTodo = '';
+                this.newTodoType = '';
             },
             removeTodo: function (todo) {
                 var index = this.todos.indexOf(todo);

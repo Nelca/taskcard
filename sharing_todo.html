@@ -10,7 +10,12 @@
         <section class="todoapp" v-cloak>
             <header class="header">
                 <h1>Informations</h1>
-                <input v-model="newTodo" >
+                <div>
+                    <span>Enter your todo</span><input v-model="newTodo" @keyup.enter="addTodo">
+                </div>
+                <div>
+                    <span>Todo type</span><input v-model="newTodoType" @keyup.enter="addTodo">
+                </div>
             </header>
             <section class="main" v-show="todos.length">
                 <ul class="todo-list">
@@ -18,9 +23,11 @@
                         <div class="view">
                             <button class="complete" @click="completeTodo(todo)">Complete!</button>
                             <span @click="editTodo(todo)">{{todo.title}}</span>
+                            <span >{{todo.type}}</span>
                             <button class="destroy" @click="removeTodo(todo)">Delete</button>
                         </div>
-                        <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)" @keyup.esc="cancelEdit(todo)">
+                        <input class="edit" type="text" v-model="todo.title">
+                        <input class="edit" type="text" v-model="todo.type">
                     </li>
                 </ul>
             </section>
@@ -42,7 +49,7 @@
             <p>Share the partner's ToDos.</p>
         </footer>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/sharing-todo-store.js"></script>
-        <script src="js/sharing-todo-app.js"></script>
+        <script src="js/sharing-todo-store.js?v=0.00"></script>
+        <script src="js/sharing-todo-app.js?v=0.01"></script>
     </body>
 </html>
