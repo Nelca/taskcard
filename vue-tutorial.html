@@ -14,6 +14,9 @@
         <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <div id="routeMountApp">
+           <router-view></router-view>
+        </div>
         <div id="app">
             {{ message }}
         </div>
@@ -164,6 +167,8 @@
             </transition-group>
         </div>
         <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/vue-router/dist/vue-router.min.js"></script>
+        <script src="js/vueRoutes.js"></script>
         <script src="js/vue-tutorial.js?v=0.49"></script>
     </body>
 </html>
