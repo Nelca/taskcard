@@ -23,7 +23,7 @@
             </header>
             <section class="main" v-show="todos.length">
                 <ul class="todo-list">
-                    <li class="todo" v-for="todo in filteredTodos">
+                    <li class="todo" v-for="todo in filteredTodos" :style="todoStyle">
                         <div class="view">
                             <input class="toggle" type="checkbox" v-model="todo.completed">
                             <span @click="editTodo(todo)">{{todo.title}}</span>
@@ -49,6 +49,7 @@
                 <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
                     Clear completed
                 </button>
+                <a href="/taskcard/sharing_todo_types.html">todo types</a>
             </footer>
         </section>
         <footer class="info">
@@ -57,6 +58,6 @@
         <script src="node_modules/vue/dist/vue.js"></script>
         <script src="js/sharing-todo-store.js?v=0.01"></script>
         <script src="js/sharing-todo-type-store.js?v=0.01"></script>
-        <script src="js/sharing-todo-app.js?v=0.01"></script>
+        <script src="js/sharing-todo-app.js?v=0.03"></script>
     </body>
 </html>

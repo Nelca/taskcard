@@ -25,7 +25,10 @@
             newTodo: '',
             newTodoType: '',
             editedTodo: null,
-            visibility: 'all'
+            visibility: 'all',
+            todoStyle: {
+                color: '#f0640f'
+            }
         },
         watch: {
             todos: {
