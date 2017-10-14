@@ -1,0 +1,44 @@
+<!doctype html>
+<html data-framework="vue">
+    <head>
+        <meta charset="utf-8">
+        <title>Share the partners request.</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+       <style> [v-cloak] { display: none; } </style>
+    </head>
+    <body>
+        <section class="todoTypeApp" v-cloak>
+            <header class="header">
+                <h1>Todo Types</h1>
+                <div>
+                    <span>Todo types.</span>
+                    <input v-model="newTodoType" @keyup.enter="addTodoType">
+                </div>
+                <div>{{ newTodoTypeColor }}
+                    <input type="color" v-model="newTodoTypeColor">
+                </div>
+            </header>
+            <section class="main" v-show="todoTypes.length">
+                <ul class="todo-type-list">
+                    <li class="todoType" v-for="todoType in todoTypes">
+                        <div class="view">
+                            <span @click="editTodoType(todoType)">{{todoType.title}}</span>
+                            <button class="destroy" @click="removeTodoType(todoType)">×</button>
+                        </div>
+                        <input class="edit" type="text" v-model="todoType.title">
+                        <input type="color" v-model="todoType.color">
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+                Todo type is as yours.
+            </footer>
+        </section>
+        <footer class="info">
+            <p>Share the partner's ToDos.</p>
+        </footer>
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="js/sharing-todo-type-store.js?v=0.00"></script>
+        <script src="js/sharing-todo-type-app.js?v=0.00"></script>
+    </body>
+</html>

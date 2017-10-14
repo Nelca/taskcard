@@ -16,9 +16,8 @@
                 </div>
                 <div>
                     <span>Todo type</span>
-                    <input v-model="newTodoType" @keyup.enter="addTodo">
-                    <select>
-                        <option v-for="list in todoLists" :value="list.title">
+                    <select v-model="newTodoType">
+                        <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
                     </select>
                 </div>
             </header>
@@ -32,8 +31,8 @@
                             <button class="destroy" @click="removeTodo(todo)">×</button>
                         </div>
                         <input class="edit" type="text" v-model="todo.title">
-                        <select>
-                            <option v-for="list in todoLists" :value="list.title" v-model="todo.type">
+                        <select v-model="todo.type">
+                            <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
                         </select>
                     </li>
                 </ul>
@@ -56,7 +55,8 @@
             <p>Share the partner's ToDos.</p>
         </footer>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/sharing-todo-store.js?v=0.00"></script>
+        <script src="js/sharing-todo-store.js?v=0.01"></script>
+        <script src="js/sharing-todo-type-store.js?v=0.01"></script>
         <script src="js/sharing-todo-app.js?v=0.01"></script>
     </body>
 </html>

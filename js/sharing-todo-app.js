@@ -20,6 +20,7 @@
     exports.app = new Vue({
         el: '.todoapp',
         data: {
+            todoTypes: todoTypeStorage.fetch(),
             todos: todoStorage.fetch(),
             newTodo: '',
             newTodoType: '',
