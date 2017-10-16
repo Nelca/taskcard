@@ -26,9 +26,6 @@
             newTodoType: '',
             editedTodo: null,
             visibility: 'all',
-            todoStyle: {
-                color: '#f0640f'
-            }
         },
         watch: {
             todos: {
@@ -56,6 +53,16 @@
         },
         // note there's no DOM manipulation here at all.
         methods: {
+            todoStyle : function (todo) {
+                return 'background-color: ' + this.getTypeColor(todo.type) + ';'
+            },
+            getTypeColor: function (typeName) {
+                for (let i = 0; i < this.todoTypes.length; i++ ) {
+                    if (this.todoTypes[i].title == typeName) {
+                        return this.todoTypes[i].color
+                    }
+                }
+            },
             pluralize: function (word, count) {
                 return word + (count === 1 ? '' : 's');
             },
