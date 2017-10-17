@@ -22,7 +22,7 @@
                 <ul class="todo-type-list">
                     <li class="todoType" v-for="todoType in todoTypes">
                         <div class="view">
-                            <span @click="editTodoType(todoType)">{{todoType.title}}</span>
+                            <span @click="editTodoType(todoType)" :style="typeColor(todoType.color)">{{todoType.title}}</span>
                             <button class="destroy" @click="removeTodoType(todoType)">×</button>
                         </div>
                         <input class="edit" type="text" v-model="todoType.title">
@@ -40,6 +40,6 @@
         </footer>
         <script src="node_modules/vue/dist/vue.js"></script>
         <script src="js/sharing-todo-type-store.js?v=0.00"></script>
-        <script src="js/sharing-todo-type-app.js?v=0.00"></script>
+        <script src="js/sharing-todo-type-app.js?v=0.02"></script>
     </body>
 </html>

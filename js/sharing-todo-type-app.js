@@ -19,6 +19,9 @@
 
         },
         methods: {
+            typeColor: function (colorCode) {
+                return 'background-color: ' + colorCode + ';'
+            },
             addTodoType: function () {
                 var value = this.newTodoType && this.newTodoType.trim();
                 var typeColor = this.newTodoTypeColor && this.newTodoTypeColor.trim();
