@@ -4,38 +4,42 @@
         <meta charset="utf-8">
         <title>Share the partners information.</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet"  href="node_modules/buefy/lib/buefy.min.css">
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
        <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoapp" v-cloak>
-            <header class="header">
-                <h1>Informations</h1>
-                <div>
-                    <span>Enter your todo</span>
-                    <input v-model="newTodo" @keyup.enter="addTodo">
+        <section class="todoapp hero" v-cloak>
+            <header class="header hero-body container">
+                <h1 class="title">Informations</h1>
+            </header>
+            <section class="add-area columns">
+                <div class="columns">
+                    <div class="column">
+                        <span>Enter your todo</span>
+                        <input v-model="newTodo" @keyup.enter="addTodo">
+                    </div>
+                    <div class="column">
+                        <span>Todo type</span>
+                        <select v-model="newTodoType">
+                            <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <span>Todo type</span>
-                    <select v-model="newTodoType">
+            </section>
+            <section class="main columns" v-show="todos.length">
+                <div class="todo" v-for="todo in filteredTodos" :style="todoStyle(todo)">
+                    <div class="view">
+                        <input class="toggle" type="checkbox" v-model="todo.completed">
+                        <span @click="editTodo(todo)">{{todo.title}}</span>
+                        <span >{{todo.type}}</span>
+                        <button class="destroy" @click="removeTodo(todo)">×</button>
+                    </div>
+                    <input class="edit" type="text" v-model="todo.title">
+                    <select v-model="todo.type">
                         <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
                     </select>
                 </div>
-            </header>
-            <section class="main" v-show="todos.length">
-                <ul class="todo-list">
-                    <li class="todo" v-for="todo in filteredTodos">
-                        <div class="view">
-                            <input class="toggle" type="checkbox" v-model="todo.completed">
-                            <span @click="editTodo(todo)">{{todo.title}}</span>
-                            <span  :style="todoStyle(todo)">{{todo.type}}</span>
-                            <button class="destroy" @click="removeTodo(todo)">×</button>
-                        </div>
-                        <input class="edit" type="text" v-model="todo.title">
-                        <select v-model="todo.type">
-                            <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
-                        </select>
-                    </li>
-                </ul>
             </section>
             <footer class="footer" v-show="todos.length">
                 <span class="todo-count">
@@ -56,8 +60,9 @@
             <p>Share the partner's ToDos.</p>
         </footer>
         <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/buefy/lib/index.js"></script>
         <script src="js/sharing-todo-store.js?v=0.01"></script>
         <script src="js/sharing-todo-type-store.js?v=0.01"></script>
-        <script src="js/sharing-todo-app.js?v=0.05"></script>
+        <script src="js/sharing-todo-app.js?v=0.06"></script>
     </body>
 </html>

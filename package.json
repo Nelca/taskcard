@@ -3,6 +3,7 @@
   "dependencies": {
     "director": "^1.2.0",
     "vue": "^2.1.8",
+    "buefy": "*",
     "vue-router": "2.7.0"
   }
 }

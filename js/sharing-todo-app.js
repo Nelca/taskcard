@@ -1,6 +1,9 @@
 /*global Vue, todoStorage */
 (function (exports) {
     'use strict';
+
+    Vue.use(Buefy.default)
+
     var filters = {
         all: function (todos) {
             return todos;
@@ -54,7 +57,7 @@
         // note there's no DOM manipulation here at all.
         methods: {
             todoStyle : function (todo) {
-                return 'background-color: ' + this.getTypeColor(todo.type) + ';'
+                return 'padding: 10px;background-color: ' + this.getTypeColor(todo.type) + ';'
             },
             getTypeColor: function (typeName) {
                 for (let i = 0; i < this.todoTypes.length; i++ ) {
