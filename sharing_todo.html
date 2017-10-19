@@ -9,11 +9,11 @@
        <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoapp hero" v-cloak>
-            <header class="header hero-body container">
+        <section class="todoapp" v-cloak>
+            <header class="header">
                 <h1 class="title">Informations</h1>
             </header>
-            <section class="add-area columns">
+            <section class="add-area">
                 <div class="columns">
                     <div class="column">
                         <span>Enter your todo</span>
@@ -28,7 +28,7 @@
                 </div>
             </section>
             <section class="main columns" v-show="todos.length">
-                <div class="todo" v-for="todo in filteredTodos" :style="todoStyle(todo)">
+                <div class="todo column" v-for="todo in filteredTodos" :style="todoStyle(todo)">
                     <div class="view">
                         <input class="toggle" type="checkbox" v-model="todo.completed">
                         <span @click="editTodo(todo)">{{todo.title}}</span>
