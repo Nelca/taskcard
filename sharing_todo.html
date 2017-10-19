@@ -9,21 +9,25 @@
        <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoapp" v-cloak>
+        <section class="todoapp container is-fluid" v-cloak>
             <header class="header">
                 <h1 class="title">Informations</h1>
             </header>
             <section class="add-area">
-                <div class="columns">
-                    <div class="column">
-                        <span>Enter your todo</span>
-                        <input v-model="newTodo" @keyup.enter="addTodo">
+                <div class="field">
+                    <label class="label">Enter your todo</label>
+                    <div class="control">
+                        <input class="input" v-model="newTodo" @keyup.enter="addTodo">
                     </div>
-                    <div class="column">
-                        <span>Todo type</span>
-                        <select v-model="newTodoType">
-                            <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
-                        </select>
+                </div>
+                <div class="field">
+                    <label class="label">Todo type</label>
+                    <div class="control">
+                        <div class="select">
+                            <select v-model="newTodoType">
+                                <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -41,7 +45,7 @@
                     </select>
                 </div>
             </section>
-            <footer class="footer" v-show="todos.length">
+            <footer class="container" v-show="todos.length">
                 <span class="todo-count">
                     <strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
                 </span>
@@ -56,7 +60,7 @@
                 <a href="./sharing_todo_types.html">todo types</a>
             </footer>
         </section>
-        <footer class="info">
+        <footer class="footer">
             <p>Share the partner's ToDos.</p>
         </footer>
         <script src="node_modules/vue/dist/vue.js"></script>
