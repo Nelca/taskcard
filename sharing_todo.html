@@ -9,11 +9,11 @@
        <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoapp container is-fluid" v-cloak>
+        <section class="todoapp section container is-fluid" v-cloak>
             <header class="header">
                 <h1 class="title">Informations</h1>
             </header>
-            <section class="add-area">
+            <section class="add-area section">
                 <div class="field">
                     <label class="label">Enter your todo</label>
                     <div class="control">
@@ -32,17 +32,21 @@
                 </div>
                 <div class="field">
                     <div class="control">
-                        <a class="button is-primary" @click="addTodo">Create</a>
+                        <button class="button is-primary" @click="addTodo">Create</button>
                     </div>
                 </div>
             </section>
-            <section class="main columns" v-show="todos.length">
-                <div class="todo column" v-for="todo in filteredTodos" :style="todoStyle(todo)">
-                    <div class="view">
-                        <input class="toggle" type="checkbox" v-model="todo.completed">
-                        <span @click="editTodo(todo)">{{todo.title}}</span>
+            <section class="main" v-show="todos.length">
+                <div class="todo card" v-for="todo in filteredTodos" :style="todoStyle(todo)">
+                    <div class="card-header" @click="editTodo(todo)">
+                        <div class="card-header-title">{{todo.title}}</div>
+                        <div class="card-header-icon">
+                            <input class="toggle" type="checkbox" v-model="todo.completed">
+                        </div>
+                    </div>
+                    <div class="view field">
                         <span >{{todo.type}}</span>
-                        <button class="destroy" @click="removeTodo(todo)">×</button>
+                        <button  class="button is-primary" @click="removeTodo(todo)">×</button>
                     </div>
                     <input class="edit" type="text" v-model="todo.title">
                     <select v-model="todo.type">
