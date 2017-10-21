@@ -30,6 +30,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="field">
+                    <div class="control">
+                        <a class="button is-primary" @click="addTodo">Create</a>
+                    </div>
+                </div>
             </section>
             <section class="main columns" v-show="todos.length">
                 <div class="todo column" v-for="todo in filteredTodos" :style="todoStyle(todo)">
