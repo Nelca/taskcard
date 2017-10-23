@@ -9,8 +9,8 @@
        <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoapp section container is-fluid" v-cloak>
-            <header class="header">
+        <section class="todoapp container is-fluid" v-cloak>
+            <header class="header hero hero-body container">
                 <h1 class="title">Informations</h1>
             </header>
             <section class="add-area section">
@@ -36,17 +36,19 @@
                     </div>
                 </div>
             </section>
-            <section class="main" v-show="todos.length">
+            <section class="main section" v-show="todos.length">
                 <div class="todo card" v-for="todo in filteredTodos" :style="todoStyle(todo)">
                     <div class="card-header" @click="editTodo(todo)">
-                        <div class="card-header-title">{{todo.title}}</div>
                         <div class="card-header-icon">
                             <input class="toggle" type="checkbox" v-model="todo.completed">
+                        </div>
+                        <div class="card-header-title">{{todo.title}}</div>
+                        <div class="card-header-icon">
+                            <a class="delete" @click="removeTodo(todo)"></a>
                         </div>
                     </div>
                     <div class="view field">
                         <span >{{todo.type}}</span>
-                        <button  class="button is-primary" @click="removeTodo(todo)">×</button>
                     </div>
                     <input class="edit" type="text" v-model="todo.title">
                     <select v-model="todo.type">
@@ -54,7 +56,7 @@
                     </select>
                 </div>
             </section>
-            <footer class="container" v-show="todos.length">
+            <footer class="section container" v-show="todos.length">
                 <span class="todo-count">
                     <strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
                 </span>
