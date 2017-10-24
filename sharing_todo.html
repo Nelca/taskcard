@@ -37,8 +37,8 @@
                 </div>
             </section>
             <section class="main section" v-show="todos.length">
-                <div class="todo card" v-for="todo in filteredTodos" :style="todoStyle(todo)">
-                    <div class="card-header" @click="editTodo(todo)">
+                <div class="todo card" v-for="todo in filteredTodos">
+                    <div class="card-header" @click="editTodo(todo)" :style="todoStyle(todo)">
                         <div class="card-header-icon">
                             <input class="toggle" type="checkbox" v-model="todo.completed">
                         </div>
@@ -47,27 +47,19 @@
                             <a class="delete" @click="removeTodo(todo)"></a>
                         </div>
                     </div>
-                    <div class="view field">
-                        <span >{{todo.type}}</span>
+                    <div class="view field card-content">
+                        <div>{{todo.type}}</div>
+                        <input class="edit" type="text" v-model="todo.title">
+                        <select v-model="todo.type">
+                            <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
+                        </select>
                     </div>
-                    <input class="edit" type="text" v-model="todo.title">
-                    <select v-model="todo.type">
-                        <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
-                    </select>
                 </div>
             </section>
-            <footer class="section container" v-show="todos.length">
-                <span class="todo-count">
+            <footer class="section container">
+                <span class="todo-count" v-show="todos.length">
                     <strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
                 </span>
-                <ul class="filters">
-                    <li><a href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
-                    <li><a href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
-                    <li><a href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a></li>
-                </ul>
-                <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
-                    Clear completed
-                </button>
                 <a href="./sharing_todo_types.html">todo types</a>
             </footer>
         </section>
@@ -78,6 +70,6 @@
         <script src="node_modules/buefy/lib/index.js"></script>
         <script src="js/sharing-todo-store.js?v=0.01"></script>
         <script src="js/sharing-todo-type-store.js?v=0.01"></script>
-        <script src="js/sharing-todo-app.js?v=0.06"></script>
+        <script src="js/sharing-todo-app.js?v=0.07"></script>
     </body>
 </html>

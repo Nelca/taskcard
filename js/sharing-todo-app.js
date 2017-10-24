@@ -57,7 +57,7 @@
         // note there's no DOM manipulation here at all.
         methods: {
             todoStyle : function (todo) {
-                return 'padding: 10px;background-color: ' + this.getTypeColor(todo.type) + ';'
+                return 'background-color: ' + this.getTypeColor(todo.type) + ';'
             },
             getTypeColor: function (typeName) {
                 for (let i = 0; i < this.todoTypes.length; i++ ) {

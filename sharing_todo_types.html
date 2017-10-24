@@ -4,41 +4,59 @@
         <meta charset="utf-8">
         <title>Share the partners request.</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet"  href="node_modules/buefy/lib/buefy.min.css">
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
        <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoTypeApp" v-cloak>
-            <header class="header">
-                <h1>Todo Types</h1>
-                <div>
-                    <span>Todo types.</span>
-                    <input v-model="newTodoType" @keyup.enter="addTodoType">
-                </div>
-                <div>{{ newTodoTypeColor }}
-                    <input type="color" v-model="newTodoTypeColor">
-                </div>
+        <section class="todoTypeApp container is-fluid" v-cloak>
+            <header class="header hero hero-body container">
+                <h1 class="title">Todo Types</h1>
             </header>
-            <section class="main" v-show="todoTypes.length">
-                <ul class="todo-type-list">
-                    <li class="todoType" v-for="todoType in todoTypes">
-                        <div class="view">
-                            <span @click="editTodoType(todoType)" :style="typeColor(todoType.color)">{{todoType.title}}</span>
-                            <button class="destroy" @click="removeTodoType(todoType)">×</button>
+            <section class="add-area section">
+                <div class="field">
+                    <label class="label">Enter todo type name</label>
+                    <div class="control">
+                        <input v-model="newTodoType">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Choose todo type color</label>
+                    <div class="control">
+                        <input type="color" v-model="newTodoTypeColor">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" @click="addTodoType">Create</button>
+                    </div>
+                </div>
+            </section>
+            <section class="main section" v-show="todoTypes.length">
+                <h2 class="title">Todo Types</h1>
+                <div class="todo-types card" v-for="todoType in todoTypes">
+                    <div class="card-header" @click="editTodoType(todoType)" :style="typeColor(todoType.color)">
+                        <div class="card-header-title">{{todoType.title}}</div>
+                        <div class="card-header-icon">
+                            <a class="delete" @click="removeTodoType(todoType)"></a>
                         </div>
+                    </div>
+                    <div class="view field card-content">
                         <input class="edit" type="text" v-model="todoType.title">
                         <input type="color" v-model="todoType.color">
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </section>
-            <footer class="footer">
+            <footer class="section container">
                 Todo type is as yours.
                 <a href="./sharing_todo.html">All todos</a>
             </footer>
         </section>
-        <footer class="info">
+        <footer class="footer">
             <p>Share the partner's ToDos.</p>
         </footer>
         <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="node_modules/buefy/lib/index.js"></script>
         <script src="js/sharing-todo-type-store.js?v=0.00"></script>
         <script src="js/sharing-todo-type-app.js?v=0.02"></script>
     </body>
