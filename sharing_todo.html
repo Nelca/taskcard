@@ -11,8 +11,29 @@
     </head>
     <body>
         <section class="todoapp container is-fluid" v-cloak>
-            <header class="header hero hero-body container">
-                <h1 class="title">Informations</h1>
+            <header class="hero">
+                <div class="hero-head">
+                    <nav class="navbar">
+                        <div class="container">
+                            <div class="navbar-brand">
+                                <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </div>
+                            <div id="navbarMenuHeroA" class="navbar-menu">
+                                <div class="navbar-end">
+                                    <a class="navbar-item is-active" href="./sharing_todo.html">all todos</a>
+                                    <a class="navbar-item" href="./sharing_todo_types.html">todo types</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="hero-body">
+                    <h1 class="title">Informations</h1>
+                </div>
             </header>
             <section class="add-area section">
                 <div class="field">
@@ -37,8 +58,8 @@
                     </div>
                 </div>
             </section>
-            <section class="main section" v-show="todos.length">
-                <div class="todo card" v-for="todo in filteredTodos">
+            <section class="main section">
+                <div class="todo card" v-for="todo in filteredTodos" v-show="todos.length">
                     <div class="card-header" @click="editTodo(todo)" :style="todoStyle(todo)">
                         <div class="card-header-icon">
                             <input class="toggle" type="checkbox" v-model="todo.completed">
@@ -56,12 +77,12 @@
                         </select>
                     </div>
                 </div>
+                <a href="./sharing_todo_types.html">todo types</a>
             </section>
             <footer class="section container">
                 <span class="todo-count" v-show="todos.length">
                     <strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
                 </span>
-                <a href="./sharing_todo_types.html">todo types</a>
             </footer>
         </section>
         <footer class="footer">
