@@ -11,9 +11,10 @@
                 color: #f00;
             }
         </style>
+           <style> [v-cloak] { display: none; } </style>
         <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
     </head>
-    <body>
+    <body v-cloak>
         <div id="routeMountApp">
            <router-view></router-view>
         </div>

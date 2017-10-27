@@ -11,20 +11,41 @@
     </head>
     <body>
         <section class="todoTypeApp container is-fluid" v-cloak>
-            <header class="header hero hero-body container">
-                <h1 class="title">Todo Types</h1>
+            <header class="hero">
+                <div class="hero-head">
+                    <nav class="navbar">
+                        <div class="container">
+                            <div class="navbar-brand">
+                                <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </div>
+                            <div id="navbarMenuHeroA" class="navbar-menu">
+                                <div class="navbar-end">
+                                    <a class="navbar-item" href="./sharing_todo.html">all todos</a>
+                                    <a class="navbar-item is-active" href="./sharing_todo_types.html">todo types</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="hero-body">
+                    <h1 class="title">Todo Types</h1>
+                </div>
             </header>
             <section class="add-area section">
                 <div class="field">
                     <label class="label">Enter todo type name</label>
                     <div class="control">
-                        <input v-model="newTodoType">
+                        <input class="input" v-model="newTodoType">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Choose todo type color</label>
                     <div class="control">
-                        <input type="color" v-model="newTodoTypeColor">
+                        <input  class="button" type="color" v-model="newTodoTypeColor">
                     </div>
                 </div>
                 <div class="field">
