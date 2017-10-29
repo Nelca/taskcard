@@ -2,54 +2,97 @@
 <html data-framework="vue">
     <head>
         <meta charset="utf-8">
-        <title>Vue.js • TodoMVC</title>
-        <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-        <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
-        <style> [v-cloak] { display: none; } </style>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+        <title>Share the partners information.</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet"  href="node_modules/buefy/lib/buefy.min.css">
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+       <style> [v-cloak] { display: none; } </style>
     </head>
     <body>
-        <section class="todoapp" v-cloak>
-            <header class="header">
-                <h1>todos</h1>
-                <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newTodo" @keyup.enter="addTodo">
-            </header>
-            <section class="main" v-show="todos.length">
-                <input class="toggle-all" type="checkbox" v-model="allDone">
-                <ul class="todo-list">
-                    <li class="todo" v-for="todo in filteredTodos" :class="{completed: todo.completed, editing: todo == editedTodo}">
-                        <div class="view">
-                            <input class="toggle" type="checkbox" v-model="todo.completed">
-                            <label @dblclick="editTodo(todo)">{{todo.title}}</label>
-                            <button class="destroy" @click="removeTodo(todo)"></button>
+        <section class="todoapp container is-fluid" v-cloak>
+            <header class="hero">
+                <div class="hero-head">
+                    <nav class="navbar">
+                        <div class="container">
+                            <div class="navbar-brand">
+                                <span class="navbar-item"></span>
+                                <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </div>
+                            <div id="navbarMenuHeroA" class="navbar-menu">
+                                <div class="navbar-end">
+                                    <a class="navbar-item is-active" href="./index.html">all todos</a>
+                                    <a class="navbar-item" href="./todo_types.html">todo types</a>
+                                </div>
+                            </div>
                         </div>
-                        <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)" @keyup.esc="cancelEdit(todo)">
-                    </li>
-                </ul>
+                    </nav>
+                </div>
+                <div class="hero-body">
+                    <h1 class="title">Informations</h1>
+                </div>
+            </header>
+            <section class="add-area section">
+                <div class="field">
+                    <label class="label">Enter your todo</label>
+                    <div class="control">
+                        <input class="input" v-model="newTodo" @keyup.enter="addTodo">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Todo type</label>
+                    <div class="control">
+                        <div class="select">
+                            <select v-model="newTodoType">
+                                <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" @click="addTodo">Create</button>
+                    </div>
+                </div>
             </section>
-            <footer class="footer" v-show="todos.length">
-                <span class="todo-count">
+            <section class="main section">
+                <div class="todo card" v-for="todo in filteredTodos" v-show="todos.length">
+                    <div class="card-header" @click="editTodo(todo)" :style="todoStyle(todo)">
+                        <div class="card-header-icon">
+                            <input class="toggle" type="checkbox" v-model="todo.completed">
+                        </div>
+                        <div class="card-header-title">{{todo.title}}</div>
+                        <div class="card-header-icon">
+                            <a class="delete" @click="removeTodo(todo)"></a>
+                        </div>
+                    </div>
+                    <div class="view field card-content">
+                        <div>{{todo.type}}</div>
+                        <input class="edit" type="text" v-model="todo.title">
+                        <select v-model="todo.type">
+                            <option v-for="list in todoTypes" :value="list.title">{{ list.title }}</option>
+                        </select>
+                    </div>
+                </div>
+                <a href="./todo_types.html">todo types</a>
+            </section>
+            <footer class="section container">
+                <span class="todo-count" v-show="todos.length">
                     <strong v-text="remaining"></strong> {{pluralize('item', remaining)}} left
                 </span>
-                <ul class="filters">
-                    <li><a href="#/all" :class="{selected: visibility == 'all'}">All</a></li>
-                    <li><a href="#/active" :class="{selected: visibility == 'active'}">Active</a></li>
-                    <li><a href="#/completed" :class="{selected: visibility == 'completed'}">Completed</a></li>
-                </ul>
-                <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
-                    Clear completed
-                </button>
             </footer>
         </section>
-        <footer class="info">
-            <p>Double-click to edit a todo</p>
-            <p>Written by <a href="http://evanyou.me">Evan You</a></p>
-            <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+        <footer class="footer">
+            <p>Share the partner's ToDos.</p>
         </footer>
-        <script src="node_modules/todomvc-common/base.js"></script>
-        <script src="node_modules/director/build/director.js"></script>
         <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/store.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/routes.js"></script>
+        <script src="node_modules/buefy/lib/index.js"></script>
+        <script src="js/sharing-todo-store.js?v=0.01"></script>
+        <script src="js/sharing-todo-type-store.js?v=0.01"></script>
+        <script src="js/sharing-todo-app.js?v=0.07"></script>
     </body>
 </html>
